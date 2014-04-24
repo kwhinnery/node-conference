@@ -8,7 +8,7 @@
     "icon": "regular.png",
     "largeIcon": "large.png",
     "featuredIcon": "featured.png",
-    "instructions": "app/README.md",
+    "instructions": "README.md",
     /* Need Source since this is a buildpack has a runtime */
     "source": {
         "scmType": "git",
