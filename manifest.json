@@ -1,0 +1,31 @@
+{
+   "name": "BP+R",
+    "services": [],
+    "description": "Twilio Conference Boilerplate",
+    "type": "web",
+    "version": "0.0.1",
+    "smallIcon": "small.png",
+    "icon": "regular.png",
+    "largeIcon": "large.png",
+    "featuredIcon": "featured.png",
+    "instructions": "app/README.md",
+    /* Need Source since this is a buildpack has a runtime */
+    "source": {
+        "scmType": "git",
+        "url": ".git",
+        "appPath": "app"
+    },
+    "docURL": "/none/none.html",
+    "doesNotSupportURL": false,
+    /* tags - ibm_created, ibm_certified, ibm_community */
+    "system_tags": ["ibm_community"],
+    /* Runtime definition for buildpack */
+    "runtime": {
+        "name": "Node.js",
+        "description": "This application runs on node.js",
+        "smallIcon": "runtime.png",
+        "icon": "runtime.png",
+        "largeIcon": "runtime.png",
+        "featuredIcon": "runtime.png"
+    }
+}
