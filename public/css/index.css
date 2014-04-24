@@ -1,0 +1,12 @@
+* {
+    text-align: center;
+}
+
+.container {
+    width:400px;
+}
+
+input[type="text"] {
+    width:100%;
+    margin-bottom:10px;
+}

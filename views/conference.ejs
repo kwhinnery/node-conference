@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="A Twilio Conference Calling Example">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conference Call: "<%= conferenceName %>"</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/conference.css">
+</head>
+<body>
+    <div class="container">
+        <h1><%= conferenceName %></h1>
+        <p>Share this URL to invite others to the conference. No need to pick up a phone - you'll all dial in to this conference right from your web browser!</p>
+        <h3>Call Controls</h3>
+        <p>
+            <button id="join" class="btn btn-primary">Join Call</button>
+            <button id="hangup" class="btn btn-danger" style="display:none;">Hang Up</button>
+            <button id="mute" class="btn btn-default">Mute</button>
+        </p>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+    <script>
+    Twilio.Device.setup('<%= token %>');
+
+    $(function() {
+        // a handle to any currently active call connection
+        var connection;
+
+        // Grab jQuery handles to the app's buttons once
+        var $join = $('#join'),
+            $hangup = $('#hangup'),
+            $mute = $('#mute');
+
+        // Handle Join Conference 
+        $join.on('click', function() {
+            Twilio.Device.connect({
+                conference:'<%= id %>'
+            });
+            $join.hide();
+            $hangup.show();
+        });
+
+        // Handle hangup
+        $hangup.on('click', function() {
+            Twilio.Device.disconnectAll();
+            $join.show();
+            $hangup.hide();
+        });
+
+        // Handle mute
+        var muted = false;
+        $mute.on('click', function() {
+            if (connection) {
+                if (muted) {
+                    $mute.html('Mute');
+                    connection.unmute();
+                } else {
+                    $mute.html('Unmute');
+                    connection.mute();
+                }
+                muted = !muted;
+            }
+        });
+
+        // Handle connection event, store connection object
+        Twilio.Device.connect(function(conn) {
+            connection = conn;
+        });
+
+        // Handle disconnect event, destroy connection object
+        Twilio.Device.disconnect(function(conn) {
+            connection = null;
+            muted = false;
+            $mute.html('Mute');
+        });
+    });
+    </script>
+</body>
+</html>

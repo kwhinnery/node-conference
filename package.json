@@ -1,0 +1,31 @@
+{
+  "name": "node-conference",
+  "version": "0.0.0",
+  "description": "Create light-weight conference call rooms on the web, powered by Twilio",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kwhinnery/node-conference"
+  },
+  "keywords": [
+    "twilio",
+    "conference",
+    "calls"
+  ],
+  "author": "Kevin WHinnery",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kwhinnery/node-conference/issues"
+  },
+  "homepage": "https://github.com/kwhinnery/node-conference",
+  "dependencies": {
+    "express": "^4.0.0",
+    "twilio": "^1.6.0",
+    "ejs": "^1.0.0",
+    "body-parser": "^1.0.2",
+    "sanitizer": "^0.1.1"
+  }
+}
